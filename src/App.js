@@ -51,6 +51,7 @@ function App() {
 
   const localTimeString = isoDateToLocalDateString(isoDateInput)
   const pacificTimeString = isoDateToTimezone(isoDateInput, 'America/Los_Angeles', '(PDT)')
+  const mountainTimeString = isoDateToTimezone(isoDateInput, 'America/Denver', '(MDT)')
   const centralTimeString = isoDateToTimezone(isoDateInput, 'America/Chicago', '(CDT)')
   const easternTimeString = isoDateToTimezone(isoDateInput, 'America/New_York', '(EDT)')
   const utcTimeString = isoDateToTimezone(isoDateInput, 'Etc/UTC', '(UTC)')
@@ -101,6 +102,7 @@ function App() {
         ></input>
         <div className='human-readable-time'>{localTimeString}</div>
         <div className='human-readable-time'>{pacificTimeString}</div>
+        <div className='human-readable-time'>{mountainTimeString}</div>
         <div className='human-readable-time'>{centralTimeString}</div>
         <div className='human-readable-time'>{easternTimeString}</div>
         <div className='human-readable-time'>{utcTimeString}</div>
