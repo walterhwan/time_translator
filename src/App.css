@@ -11,6 +11,7 @@
 .center-div {
   display: flex;
   height: 100vh;
+  min-width: 650px;
   text-align: left;
   flex-direction: column;
 }
