@@ -14,7 +14,7 @@ function epochToISO(epoch) {
   const value = typeof epoch === 'string' ? Number(epoch) : epoch
   try {
     return new Date(value).toISOString()
-  } catch {
+  } catch (_) {
     return PLACE_HOLDER
   }
 }
@@ -22,7 +22,7 @@ function epochToISO(epoch) {
 function isoDateToEpoch(isoDate) {
   try {
     return new Date(isoDate).getTime() || PLACE_HOLDER
-  } catch {
+  } catch (_) {
     return PLACE_HOLDER
   }
 }
@@ -38,7 +38,8 @@ function isoDateToLocalDateString(isoDate) {
 function isoDateToTimezone(isoDate, timezoneString, note) {
   if (moment(isoDate).isValid()) {
     return (
-      moment(isoDate).tz(timezoneString).format('YYYY-MM-DD, hh:mm:ss A') + ` ${note}`
+      moment(isoDate).tz(timezoneString).format('YYYY-MM-DD, hh:mm:ss A') +
+      ` ${note}`
     )
   } else {
     return PLACE_HOLDER
@@ -50,12 +51,32 @@ function App() {
   const [isoDateInput, setIsoDateInput] = React.useState(epochToISO(epochInput))
 
   const localTimeString = isoDateToLocalDateString(isoDateInput)
-  const pacificTimeString = isoDateToTimezone(isoDateInput, 'America/Los_Angeles', '(PDT)')
-  const mountainTimeString = isoDateToTimezone(isoDateInput, 'America/Denver', '(MDT)')
-  const centralTimeString = isoDateToTimezone(isoDateInput, 'America/Chicago', '(CDT)')
-  const easternTimeString = isoDateToTimezone(isoDateInput, 'America/New_York', '(EDT)')
+  const pacificTimeString = isoDateToTimezone(
+    isoDateInput,
+    'America/Los_Angeles',
+    '(PDT)'
+  )
+  const mountainTimeString = isoDateToTimezone(
+    isoDateInput,
+    'America/Denver',
+    '(MDT)'
+  )
+  const centralTimeString = isoDateToTimezone(
+    isoDateInput,
+    'America/Chicago',
+    '(CDT)'
+  )
+  const easternTimeString = isoDateToTimezone(
+    isoDateInput,
+    'America/New_York',
+    '(EDT)'
+  )
   const utcTimeString = isoDateToTimezone(isoDateInput, 'Etc/UTC', '(UTC)')
-  const nepalTimeString = isoDateToTimezone(isoDateInput, 'Asia/Kathmandu', '(Nepalgunj)')
+  const nepalTimeString = isoDateToTimezone(
+    isoDateInput,
+    'Asia/Kathmandu',
+    '(Nepalgunj)'
+  )
 
   const handleEpochChange = (event) => {
     const epoch = replaceNonDigitString(event.target.value)
@@ -79,7 +100,13 @@ function App() {
     <div className="App">
       <div className="center-div">
         <div className="title">Time Translator</div>
-        <button className="set-button" type="button" onClick={handleSetCurrentTime}>Set to current time</button>
+        <button
+          className="set-button"
+          type="button"
+          onClick={handleSetCurrentTime}
+        >
+          Set to current time
+        </button>
         {/* Epoch */}
         <label htmlFor="epoch-input">UNIX Epoch time in milliseconds</label>
         <input
@@ -100,13 +127,13 @@ function App() {
           value={isoDateInput}
           onChange={handleIsoDateChange}
         ></input>
-        <div className='human-readable-time'>{localTimeString}</div>
-        <div className='human-readable-time'>{pacificTimeString}</div>
-        <div className='human-readable-time'>{mountainTimeString}</div>
-        <div className='human-readable-time'>{centralTimeString}</div>
-        <div className='human-readable-time'>{easternTimeString}</div>
-        <div className='human-readable-time'>{utcTimeString}</div>
-        <div className='human-readable-time'>{nepalTimeString}</div>
+        <div className="human-readable-time">{localTimeString}</div>
+        <div className="human-readable-time">{pacificTimeString}</div>
+        <div className="human-readable-time">{mountainTimeString}</div>
+        <div className="human-readable-time">{centralTimeString}</div>
+        <div className="human-readable-time">{easternTimeString}</div>
+        <div className="human-readable-time">{utcTimeString}</div>
+        <div className="human-readable-time">{nepalTimeString}</div>
       </div>
     </div>
   )
