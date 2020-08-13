@@ -35,11 +35,11 @@ function isoDateToLocalDateString(isoDate) {
   }
 }
 
-function isoDateToTimezone(isoDate, timezoneString, note) {
+function isoDateToTimezone(isoDate, timezoneString) {
   if (moment(isoDate).isValid()) {
     return (
       moment(isoDate).tz(timezoneString).format('YYYY-MM-DD, hh:mm:ss A') +
-      ` ${note}`
+      ` (${timezoneString})`
     )
   } else {
     return PLACE_HOLDER
@@ -54,28 +54,23 @@ function App() {
   const pacificTimeString = isoDateToTimezone(
     isoDateInput,
     'America/Los_Angeles',
-    '(PDT)'
   )
   const mountainTimeString = isoDateToTimezone(
     isoDateInput,
     'America/Denver',
-    '(MDT)'
   )
   const centralTimeString = isoDateToTimezone(
     isoDateInput,
     'America/Chicago',
-    '(CDT)'
   )
   const easternTimeString = isoDateToTimezone(
     isoDateInput,
     'America/New_York',
-    '(EDT)'
   )
   const utcTimeString = isoDateToTimezone(isoDateInput, 'Etc/UTC', '(UTC)')
   const nepalTimeString = isoDateToTimezone(
     isoDateInput,
     'Asia/Kathmandu',
-    '(Nepalgunj)'
   )
 
   const handleEpochChange = (event) => {
