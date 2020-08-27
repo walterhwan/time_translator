@@ -103,12 +103,14 @@ function App() {
     const epoch = replaceNonDigitString(event.target.value)
     setEpochInput(epoch)
     setIsoDateInput(epochToISO(epoch))
+    setLocalIsoDateInput(epochToLocal(epochInput))
   }
 
   const handleIsoDateChange = (event) => {
     const isoDate = event.target.value
     setIsoDateInput(isoDate)
     setEpochInput(isoDateToEpoch(isoDate))
+    setLocalIsoDateInput(epochToLocal(isoDateToEpoch(isoDate)))
   }
 
   const handleLocalDateChange = (event) => {
