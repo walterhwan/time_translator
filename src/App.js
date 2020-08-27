@@ -19,6 +19,31 @@ function epochToISO(epoch) {
   }
 }
 
+function epochToLocal(epoch) {
+  const value = typeof epoch === 'string' ? Number(epoch) : epoch
+  try {
+    return moment(value).tz(moment.tz.guess()).format()
+  } catch (_) {
+    return PLACE_HOLDER
+  }
+}
+
+function localIsoToIso(localIsoDate) {
+  try {
+    return new Date(localIsoDate).toISOString()
+  } catch (_) {
+    return PLACE_HOLDER
+  }
+}
+
+function localIsoToEpoch(localIsoDate) {
+  try {
+    return new Date(localIsoDate).getTime() || PLACE_HOLDER
+  } catch (_) {
+    return PLACE_HOLDER
+  }
+}
+
 function isoDateToEpoch(isoDate) {
   try {
     return new Date(isoDate).getTime() || PLACE_HOLDER
@@ -49,6 +74,7 @@ function isoDateToTimezone(isoDate, timezoneString) {
 function App() {
   const [epochInput, setEpochInput] = React.useState(Date.now())
   const [isoDateInput, setIsoDateInput] = React.useState(epochToISO(epochInput))
+  const [localIsoDateInput, setLocalIsoDateInput] = React.useState(epochToLocal(epochInput))
 
   const localTimeString = isoDateToLocalDateString(isoDateInput)
   const pacificTimeString = isoDateToTimezone(
@@ -85,10 +111,18 @@ function App() {
     setEpochInput(isoDateToEpoch(isoDate))
   }
 
+  const handleLocalDateChange = (event) => {
+    const localIsoDate = event.target.value
+    setLocalIsoDateInput(localIsoDate)
+    setIsoDateInput(localIsoToIso(localIsoDate))
+    setEpochInput(localIsoToEpoch(localIsoDate))
+  }
+
   const handleSetCurrentTime = () => {
     const epoch = Date.now()
     setEpochInput(epoch)
     setIsoDateInput(epochToISO(epoch))
+    setLocalIsoDateInput(epochToLocal(epochInput))
   }
 
   return (
@@ -121,6 +155,16 @@ function App() {
           type="text"
           value={isoDateInput}
           onChange={handleIsoDateChange}
+        ></input>
+        {/* Local ISO Date */}
+        <label htmlFor="iso-input">Local ISO 8601</label>
+        <input
+          className="iso-input"
+          id="iso-input"
+          autoFocus
+          type="text"
+          value={localIsoDateInput}
+          onChange={handleLocalDateChange}
         ></input>
         <div className="human-readable-time">{localTimeString}</div>
         <div className="human-readable-time">{pacificTimeString}</div>
