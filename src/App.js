@@ -74,30 +74,21 @@ function isoDateToTimezone(isoDate, timezoneString) {
 function App() {
   const [epochInput, setEpochInput] = React.useState(Date.now())
   const [isoDateInput, setIsoDateInput] = React.useState(epochToISO(epochInput))
-  const [localIsoDateInput, setLocalIsoDateInput] = React.useState(epochToLocal(epochInput))
+  const [localIsoDateInput, setLocalIsoDateInput] = React.useState(
+    epochToLocal(epochInput)
+  )
 
   const localTimeString = isoDateToLocalDateString(isoDateInput)
   const pacificTimeString = isoDateToTimezone(
     isoDateInput,
-    'America/Los_Angeles',
+    'America/Los_Angeles'
   )
-  const mountainTimeString = isoDateToTimezone(
-    isoDateInput,
-    'America/Denver',
-  )
-  const centralTimeString = isoDateToTimezone(
-    isoDateInput,
-    'America/Chicago',
-  )
-  const easternTimeString = isoDateToTimezone(
-    isoDateInput,
-    'America/New_York',
-  )
+  const mountainTimeString = isoDateToTimezone(isoDateInput, 'America/Denver')
+  const centralTimeString = isoDateToTimezone(isoDateInput, 'America/Chicago')
+  const easternTimeString = isoDateToTimezone(isoDateInput, 'America/New_York')
   const utcTimeString = isoDateToTimezone(isoDateInput, 'Etc/UTC', '(UTC)')
-  const nepalTimeString = isoDateToTimezone(
-    isoDateInput,
-    'Asia/Kathmandu',
-  )
+  const nepalTimeString = isoDateToTimezone(isoDateInput, 'Asia/Kathmandu')
+  const hawaiiTimeString = isoDateToTimezone(isoDateInput, 'US/Hawaii')
 
   const handleEpochChange = (event) => {
     const epoch = replaceNonDigitString(event.target.value)
@@ -175,6 +166,7 @@ function App() {
         <div className="human-readable-time">{easternTimeString}</div>
         <div className="human-readable-time">{utcTimeString}</div>
         <div className="human-readable-time">{nepalTimeString}</div>
+        <div className="human-readable-time">{hawaiiTimeString}</div>
       </div>
     </div>
   )
