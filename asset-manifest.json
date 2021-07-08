@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/time_translator/static/css/main.34d4e871.chunk.css",
-    "main.js": "/time_translator/static/js/main.5d5c86ef.chunk.js",
-    "main.js.map": "/time_translator/static/js/main.5d5c86ef.chunk.js.map",
+    "main.js": "/time_translator/static/js/main.744ff4b9.chunk.js",
+    "main.js.map": "/time_translator/static/js/main.744ff4b9.chunk.js.map",
     "runtime-main.js": "/time_translator/static/js/runtime-main.fa21e227.js",
     "runtime-main.js.map": "/time_translator/static/js/runtime-main.fa21e227.js.map",
     "static/js/2.8f1b090d.chunk.js": "/time_translator/static/js/2.8f1b090d.chunk.js",
     "static/js/2.8f1b090d.chunk.js.map": "/time_translator/static/js/2.8f1b090d.chunk.js.map",
     "index.html": "/time_translator/index.html",
-    "precache-manifest.5eb45f8be37a7127ba81bc570549aeb4.js": "/time_translator/precache-manifest.5eb45f8be37a7127ba81bc570549aeb4.js",
+    "precache-manifest.33c3f0429485c277adb0d3e4f51e8edb.js": "/time_translator/precache-manifest.33c3f0429485c277adb0d3e4f51e8edb.js",
     "service-worker.js": "/time_translator/service-worker.js",
     "static/css/main.34d4e871.chunk.css.map": "/time_translator/static/css/main.34d4e871.chunk.css.map",
     "static/js/2.8f1b090d.chunk.js.LICENSE.txt": "/time_translator/static/js/2.8f1b090d.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.fa21e227.js",
     "static/js/2.8f1b090d.chunk.js",
     "static/css/main.34d4e871.chunk.css",
-    "static/js/main.5d5c86ef.chunk.js"
+    "static/js/main.744ff4b9.chunk.js"
   ]
 }
