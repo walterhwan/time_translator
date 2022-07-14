@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+It is hosted in github https://walterhwan.github.io/time_translator
+
 ## Available Scripts
 
 In the project directory, you can run:
